@@ -1,0 +1,57 @@
+---
+import { contacts } from '../data/site';
+---
+
+<footer>
+	<div class="container">
+		<h2 class="display">Get in touch</h2>
+		{
+			contacts.map((contact) => (
+				<address>
+					<p>{contact.name}</p>
+					<a href={`tel:${contact.phone.replace(/\D/g, '')}`}>{contact.phone}</a>
+					<a href={`mailto:${contact.email}`}>{contact.email}</a>
+				</address>
+			))
+		}
+	</div>
+</footer>
+
+<style>
+	footer {
+		padding-block: 36px;
+	}
+
+	.container {
+		display: grid;
+		grid-template-columns: 1fr auto auto;
+		align-items: center;
+		gap: 32px;
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+	}
+
+	address {
+		display: grid;
+		gap: 8px;
+		font-size: var(--text-lg);
+		font-style: normal;
+	}
+
+	a {
+		text-decoration: none;
+		overflow-wrap: anywhere;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	@media (max-width: 900px) {
+		.container {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

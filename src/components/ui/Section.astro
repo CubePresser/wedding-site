@@ -1,0 +1,52 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+	tone?: 'cream' | 'stripes' | 'photo';
+	/** Background for tone="photo". Falls back to a placeholder gradient. */
+	image?: ImageMetadata;
+	class?: string;
+}
+
+const { tone = 'cream', image, class: className } = Astro.props;
+---
+
+<section
+	class:list={[
+		className,
+		tone,
+		{ 'bg-stripes-olive': tone === 'stripes', 'bg-photo-placeholder': tone === 'photo' && !image },
+	]}
+>
+	{tone === 'photo' && image && <Image class="backdrop" src={image} alt="" widths={[768, 1366, 2000]} />}
+	<div class="container content">
+		<slot />
+	</div>
+</section>
+
+<style>
+	section {
+		position: relative;
+		padding-block: var(--section-space);
+		overflow: hidden;
+	}
+
+	.stripes,
+	.photo {
+		color: var(--color-cream);
+	}
+
+	.backdrop {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: saturate(0.7) brightness(0.75);
+	}
+
+	.content {
+		position: relative;
+	}
+</style>

@@ -1,0 +1,74 @@
+---
+import { navLinks } from '../data/site';
+import Monogram from './ui/Monogram.astro';
+
+const currentPath = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const links = [...navLinks.left, ...navLinks.right];
+---
+
+<!-- Sits on top of each page's first section, so that section must have a dark background. -->
+<header>
+	<nav class="container" aria-label="Main">
+		<ul>
+			{
+				links.map((link, index) => (
+					<>
+						{index === navLinks.left.length && (
+							<li class="monogram">
+								<a href="/" aria-label="Rachel & Alex, home">
+									<Monogram />
+								</a>
+							</li>
+						)}
+						<li>
+							<a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>
+								{link.label}
+							</a>
+						</li>
+					</>
+				))
+			}
+		</ul>
+	</nav>
+</header>
+
+<style>
+	header {
+		position: absolute;
+		inset: 0 0 auto;
+		z-index: 10;
+		padding-block: 12px;
+		color: var(--color-cream);
+	}
+
+	ul {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		align-items: center;
+		justify-items: center;
+		padding: 0;
+		list-style: none;
+	}
+
+	a {
+		font-size: var(--text-lg);
+		text-decoration: none;
+	}
+
+	a[aria-current='page'],
+	a:hover {
+		text-decoration: underline;
+		text-underline-offset: 6px;
+		text-decoration-thickness: 1px;
+	}
+
+	.monogram a {
+		display: block;
+	}
+
+	@media (max-width: 560px) {
+		a {
+			font-size: 1rem;
+		}
+	}
+</style>

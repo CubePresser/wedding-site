@@ -1,0 +1,41 @@
+---
+import { site } from '../../data/site';
+import Section from '../ui/Section.astro';
+---
+
+<Section>
+	<div class="card flow">
+		<h2 class="script">Registry</h2>
+		<p>
+			Your presence at our wedding is the greatest gift we could ever ask for! The time, effort, and
+			expense you take to travel and celebrate with us is what we treasure most.
+		</p>
+		<p>
+			Thanks to our wonderful parents, our kitchen and home are already fully stocked with the
+			essentials (and maybe a few too many coffee mugs!). Because of this, our registry is on the
+			smaller side and includes an option to contribute to our honeymoon fund. Contributions toward
+			our honeymoon fund will help us fund our dream trip together as newlyweds!
+		</p>
+		<p>We are so grateful for your love and can't wait to celebrate with you soon!</p>
+		<a href={site.registryUrl}>{site.couple.first} &amp; {site.couple.second}'s Registry</a>
+	</div>
+</Section>
+
+<style>
+	.card {
+		max-width: 1014px;
+		margin-inline: auto;
+		padding: 40px clamp(20px, 5vw, 60px);
+		border: 23px solid var(--color-olive);
+		text-align: center;
+	}
+
+	h2 {
+		font-size: clamp(3.5rem, 7vw, 5.5rem);
+	}
+
+	a {
+		display: inline-block;
+		font-size: 1.375rem;
+	}
+</style>

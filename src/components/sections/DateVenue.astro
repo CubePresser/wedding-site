@@ -1,0 +1,61 @@
+---
+import engagement from '../../assets/placeholder/engagement.png';
+import { site } from '../../data/site';
+import FramedPhoto from '../ui/FramedPhoto.astro';
+---
+
+<section>
+	<div class="band bg-stripes-stone"></div>
+	<div class="container grid">
+		<FramedPhoto src={engagement} alt="Alex proposing to Rachel on a rocky overlook" variant="double" />
+		<div class="when-where">
+			<p class="script date">{site.dateShort}</p>
+			<p class="script at">at</p>
+			<p class="display venue">{site.venue.name}, {site.venue.region}</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		position: relative;
+		padding-block: 78px 78px;
+	}
+
+	.band {
+		position: absolute;
+		inset: 0 0 auto;
+		height: 176px;
+	}
+
+	.grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 452px) 1fr;
+		align-items: center;
+		gap: clamp(32px, 7vw, 96px);
+	}
+
+	.when-where {
+		text-align: center;
+	}
+
+	.date {
+		font-size: var(--text-2xl);
+		line-height: 1.1;
+	}
+
+	.at {
+		font-size: var(--text-xl);
+	}
+
+	.venue {
+		font-size: var(--text-xl);
+	}
+
+	@media (max-width: 760px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

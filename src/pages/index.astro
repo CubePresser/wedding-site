@@ -1,16 +1,26 @@
 ---
+import DateVenue from '../components/sections/DateVenue.astro';
+import Hero from '../components/sections/Hero.astro';
+import OtherDetails from '../components/sections/OtherDetails.astro';
+import OurSpecialDay from '../components/sections/OurSpecialDay.astro';
+import PhotoStrip from '../components/sections/PhotoStrip.astro';
+import Registry from '../components/sections/Registry.astro';
+import Rsvp from '../components/sections/Rsvp.astro';
+import TheDay from '../components/sections/TheDay.astro';
+import WhereToStay from '../components/sections/WhereToStay.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Alex & Rachel's Wedding - Home</title>
-	</head>
-	<body>
-		<h1>Homepage</h1>
-	</body>
-</html>
+<BaseLayout title="Home">
+	<main>
+		<Hero />
+		<DateVenue />
+		<OurSpecialDay />
+		<TheDay />
+		<Rsvp />
+		<OtherDetails />
+		<WhereToStay />
+		<Registry />
+		<PhotoStrip />
+	</main>
+</BaseLayout>

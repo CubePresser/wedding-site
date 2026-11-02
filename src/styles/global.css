@@ -1,0 +1,81 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	background: var(--color-cream);
+	color: var(--color-ink);
+	font-family: var(--font-display), serif;
+	font-size: var(--text-body);
+	line-height: 1.4;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: inherit;
+}
+
+:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+}
+
+/* Type */
+h1,
+h2,
+h3 {
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.display {
+	font-family: var(--font-display), serif;
+	text-transform: uppercase;
+}
+
+.script {
+	font-family: var(--font-script), cursive;
+	text-transform: none;
+}
+
+.flow > * + * {
+	margin-top: 1.25em;
+}
+
+/* Layout */
+.container {
+	width: min(100% - 2 * var(--gutter), var(--content-width));
+	margin-inline: auto;
+}
+
+/* Backgrounds */
+.bg-stripes-olive {
+	background: repeating-linear-gradient(
+		90deg,
+		var(--color-olive) 0 19px,
+		var(--color-olive-line) 19px 22px
+	);
+}
+
+.bg-stripes-stone {
+	background: repeating-linear-gradient(
+		90deg,
+		var(--color-stone) 0 29px,
+		var(--color-cream) 29px 58px
+	);
+}
+
+/* Holds photographic sections until the real venue photos are added. */
+.bg-photo-placeholder {
+	background: linear-gradient(160deg, #6f7a64, #4d5240);
+}

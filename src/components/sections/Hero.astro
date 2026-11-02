@@ -1,0 +1,43 @@
+---
+import { site } from '../../data/site';
+---
+
+<!-- TODO: swap the placeholder for the venue aerial using Section's image handling -->
+<section class="bg-photo-placeholder">
+	<h1 class="display">
+		<span>{site.couple.first}</span>
+		<span class="script">and</span>
+		<span>{site.couple.second}</span>
+	</h1>
+	<p class="display">Are getting married!</p>
+</section>
+
+<style>
+	section {
+		display: grid;
+		place-content: center;
+		min-height: min(56vw, 768px);
+		padding-block: 130px 80px;
+		color: var(--color-cream);
+		text-align: center;
+	}
+
+	h1 {
+		font-size: var(--text-hero);
+		line-height: 0.85;
+	}
+
+	span {
+		display: block;
+	}
+
+	.script {
+		position: relative;
+		font-size: 0.85em;
+	}
+
+	p {
+		margin-top: 0.8em;
+		font-size: var(--text-xl);
+	}
+</style>

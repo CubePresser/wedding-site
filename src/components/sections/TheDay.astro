@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import { schedule, scheduleIntro } from '../../data/schedule';
+import Section from '../ui/Section.astro';
+---
+
+<Section class="the-day">
+	<h2 class="display">The Day</h2>
+	<p class="script intro">{scheduleIntro}</p>
+	<ol>
+		{
+			schedule.map((item) => (
+				<li>
+					<Image src={item.icon} alt="" />
+					<time>{item.time}</time>
+					<span class="script">{item.label}</span>
+				</li>
+			))
+		}
+	</ol>
+</Section>
+
+<style>
+	h2,
+	.intro {
+		color: var(--color-plum-dark);
+		text-align: center;
+	}
+
+	h2 {
+		font-size: var(--text-2xl);
+	}
+
+	.intro {
+		margin-top: 0.8em;
+		font-size: var(--text-xl);
+	}
+
+	ol {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+		gap: 40px 16px;
+		margin-top: 64px;
+		padding: 0;
+		color: var(--color-plum-dark);
+		list-style: none;
+		text-align: center;
+	}
+
+	li {
+		display: grid;
+		justify-items: center;
+		gap: 8px;
+	}
+
+	img {
+		height: 140px;
+		width: auto;
+	}
+
+	time {
+		font-size: var(--text-lg);
+	}
+
+	.script {
+		font-size: var(--text-xl);
+	}
+</style>

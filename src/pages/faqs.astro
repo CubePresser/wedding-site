@@ -1,0 +1,37 @@
+---
+import { faqs } from '../data/faqs';
+import PanelLayout from '../layouts/PanelLayout.astro';
+---
+
+<PanelLayout title="FAQs" heading="Questions">
+	<dl>
+		{
+			faqs.map((faq) => (
+				<div>
+					<dt>{faq.question}</dt>
+					{faq.answer.map((paragraph) => (
+						<dd>{paragraph}</dd>
+					))}
+				</div>
+			))
+		}
+	</dl>
+</PanelLayout>
+
+<style>
+	dl {
+		display: grid;
+		gap: 32px;
+	}
+
+	dt {
+		font-size: var(--text-lg);
+	}
+
+	dd {
+		margin: 0;
+		font-family: var(--font-body), sans-serif;
+		font-size: var(--text-body);
+		line-height: 1.45;
+	}
+</style>

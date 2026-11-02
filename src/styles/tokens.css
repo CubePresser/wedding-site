@@ -1,0 +1,21 @@
+/* Colors sampled from the mockups. Font variables come from astro.config.mjs. */
+:root {
+	--color-cream: #f5f2ed;
+	--color-olive: #75705a;
+	--color-olive-line: #9d9678;
+	--color-stone: #dcd9d5;
+	--color-plum: #8a5b6b;
+	--color-plum-dark: #3f2a3a;
+	--color-ink: #4f4f4f;
+	--color-white: #ffffff;
+
+	--content-width: 1212px;
+	--gutter: clamp(16px, 5.6vw, 77px);
+	--section-space: clamp(48px, 7vw, 96px);
+
+	--text-body: 1.125rem;
+	--text-lg: clamp(1.25rem, 2vw, 1.75rem);
+	--text-xl: clamp(1.75rem, 3vw, 2.5rem);
+	--text-2xl: clamp(2.5rem, 5vw, 4.5rem);
+	--text-hero: clamp(3.5rem, 11vw, 9.5rem);
+}
