@@ -14,7 +14,7 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ['./src/assets/fonts/the-seasons.ttf'],
+            src: ['./src/assets/fonts/the-seasons.woff2'],
             weight: 400,
             style: 'normal',
           },

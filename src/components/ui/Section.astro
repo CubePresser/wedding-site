@@ -3,16 +3,19 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
 interface Props {
+	/** Anchor target for in-page nav links. */
+	id?: string;
 	tone?: 'cream' | 'stripes' | 'photo';
 	/** Background for tone="photo". Falls back to a placeholder gradient. */
 	image?: ImageMetadata;
 	class?: string;
 }
 
-const { tone = 'cream', image, class: className } = Astro.props;
+const { id, tone = 'cream', image, class: className } = Astro.props;
 ---
 
 <section
+	id={id}
 	class:list={[
 		className,
 		tone,

@@ -16,10 +16,10 @@ export const site = {
 export const navLinks = {
 	left: [
 		{ label: 'Home', href: '/' },
-		{ label: 'Schedule', href: '/schedule' },
+		{ label: 'Schedule', href: '/#schedule' },
 	],
 	right: [
-		{ label: 'Details', href: '/details' },
+		{ label: 'Details', href: '/#details' },
 		{ label: 'FAQs', href: '/faqs' },
 	],
 };
