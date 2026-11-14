@@ -1,0 +1,23 @@
+.heading {
+	font-size: clamp(3.5rem, 8vw, 6.5rem);
+	text-align: right;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 56px clamp(32px, 6vw, 80px);
+	margin-top: 72px;
+	text-align: right;
+}
+
+.title {
+	margin-bottom: 0.4em;
+	font-size: var(--text-xl);
+}
+
+@media (max-width: 760px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}

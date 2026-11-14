@@ -1,0 +1,36 @@
+.footer {
+	padding-block: 36px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	align-items: center;
+	gap: 32px;
+}
+
+.heading {
+	font-size: var(--text-2xl);
+}
+
+.contact {
+	display: grid;
+	gap: 8px;
+	font-size: var(--text-lg);
+	font-style: normal;
+}
+
+.link {
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}

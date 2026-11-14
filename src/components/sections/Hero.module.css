@@ -1,0 +1,27 @@
+.hero {
+	display: grid;
+	place-content: center;
+	min-height: min(56vw, 768px);
+	padding-block: 130px 80px;
+	color: var(--color-cream);
+	text-align: center;
+}
+
+.names {
+	font-size: var(--text-hero);
+	line-height: 0.85;
+}
+
+.line {
+	display: block;
+}
+
+.and {
+	position: relative;
+	font-size: 0.85em;
+}
+
+.tagline {
+	margin-top: 0.8em;
+	font-size: var(--text-xl);
+}

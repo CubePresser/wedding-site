@@ -1,0 +1,22 @@
+.section {
+	position: relative;
+	padding-block: var(--section-space);
+	overflow: hidden;
+}
+
+.onDark {
+	color: var(--color-cream);
+}
+
+.backdrop {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: saturate(0.7) brightness(0.75);
+}
+
+.content {
+	position: relative;
+}

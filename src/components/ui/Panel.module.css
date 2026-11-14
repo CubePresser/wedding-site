@@ -1,0 +1,20 @@
+.page {
+	padding-block: 160px 80px;
+}
+
+.panel {
+	display: flow-root;
+	background: var(--color-cream);
+	padding: 0 clamp(20px, 5vw, 64px) 56px;
+}
+
+.heading {
+	margin-top: -0.55em;
+	margin-bottom: 0.35em;
+	color: var(--color-cream);
+	font-size: clamp(4rem, 9vw, 7.5rem);
+	line-height: 1;
+	text-align: center;
+	-webkit-text-stroke: 6px var(--color-olive);
+	paint-order: stroke fill;
+}

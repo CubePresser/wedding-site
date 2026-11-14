@@ -1,0 +1,15 @@
+.list {
+	display: grid;
+	gap: 32px;
+}
+
+.question {
+	font-size: var(--text-lg);
+}
+
+.answer {
+	margin: 0;
+	font-family: var(--font-body), sans-serif;
+	font-size: var(--text-body);
+	line-height: 1.45;
+}

@@ -1,0 +1,6 @@
+.photos {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 322px));
+	justify-content: center;
+	gap: clamp(32px, 6vw, 80px);
+}

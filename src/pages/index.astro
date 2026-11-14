@@ -1,26 +1,37 @@
 ---
-import DateVenue from '../components/sections/DateVenue.astro';
-import Hero from '../components/sections/Hero.astro';
-import OtherDetails from '../components/sections/OtherDetails.astro';
-import OurSpecialDay from '../components/sections/OurSpecialDay.astro';
-import PhotoStrip from '../components/sections/PhotoStrip.astro';
-import Registry from '../components/sections/Registry.astro';
-import Rsvp from '../components/sections/Rsvp.astro';
-import TheDay from '../components/sections/TheDay.astro';
-import WhereToStay from '../components/sections/WhereToStay.astro';
+import DateVenue from '../components/sections/DateVenue';
+import Hero from '../components/sections/Hero';
+import OtherDetails from '../components/sections/OtherDetails';
+import OurSpecialDay from '../components/sections/OurSpecialDay';
+import PhotoStrip from '../components/sections/PhotoStrip';
+import Registry from '../components/sections/Registry';
+import Rsvp from '../components/sections/Rsvp';
+import TheDay from '../components/sections/TheDay';
+import WhereToStay from '../components/sections/WhereToStay';
+import { engagement, gallery } from '../data/photos';
+import { schedule } from '../data/schedule';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { optimizeImage } from '../lib/images';
+
+const engagementPhoto = { ...engagement, image: await optimizeImage(engagement.image) };
+const scheduleItems = await Promise.all(
+	schedule.map(async (item) => ({ ...item, icon: await optimizeImage(item.icon) })),
+);
+const galleryPhotos = await Promise.all(
+	gallery.map(async (photo) => ({ ...photo, image: await optimizeImage(photo.image) })),
+);
 ---
 
 <BaseLayout title="Home">
 	<main>
 		<Hero />
-		<DateVenue />
+		<DateVenue photo={engagementPhoto} />
 		<OurSpecialDay />
-		<TheDay />
+		<TheDay items={scheduleItems} />
 		<Rsvp />
 		<OtherDetails />
 		<WhereToStay />
 		<Registry />
-		<PhotoStrip />
+		<PhotoStrip photos={galleryPhotos} />
 	</main>
 </BaseLayout>

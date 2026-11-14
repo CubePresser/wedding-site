@@ -1,0 +1,14 @@
+.button {
+	display: inline-block;
+	padding: 0.9em 3.2em;
+	border-radius: 20px;
+	background: var(--color-plum);
+	color: var(--color-cream);
+	font-size: var(--text-lg);
+	text-decoration: none;
+	transition: filter 0.15s ease;
+}
+
+.button:hover {
+	filter: brightness(1.12);
+}

@@ -1,0 +1,38 @@
+.header {
+	position: absolute;
+	inset: 0 0 auto;
+	z-index: 10;
+	padding-block: 12px;
+	color: var(--color-cream);
+}
+
+.list {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	align-items: center;
+	justify-items: center;
+	padding: 0;
+	list-style: none;
+}
+
+.link {
+	font-size: var(--text-lg);
+	text-decoration: none;
+}
+
+.link[aria-current='page'],
+.link:hover {
+	text-decoration: underline;
+	text-underline-offset: 6px;
+	text-decoration-thickness: 1px;
+}
+
+.monogram {
+	display: block;
+}
+
+@media (max-width: 560px) {
+	.link {
+		font-size: 1rem;
+	}
+}

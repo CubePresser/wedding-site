@@ -1,0 +1,44 @@
+.heading,
+.intro {
+	color: var(--color-plum-dark);
+	text-align: center;
+}
+
+.heading {
+	font-size: var(--text-2xl);
+}
+
+.intro {
+	margin-top: 0.8em;
+	font-size: var(--text-xl);
+}
+
+.timeline {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+	gap: 40px 16px;
+	margin-top: 64px;
+	padding: 0;
+	color: var(--color-plum-dark);
+	list-style: none;
+	text-align: center;
+}
+
+.item {
+	display: grid;
+	justify-items: center;
+	gap: 8px;
+}
+
+.icon {
+	height: 140px;
+	width: auto;
+}
+
+.time {
+	font-size: var(--text-lg);
+}
+
+.label {
+	font-size: var(--text-xl);
+}

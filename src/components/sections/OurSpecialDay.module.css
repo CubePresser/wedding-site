@@ -1,0 +1,14 @@
+.panel {
+	padding: clamp(24px, 4vw, 48px) clamp(20px, 15vw, 196px);
+	background: rgb(117 112 90 / 0.65);
+	font-size: var(--text-lg);
+	text-align: center;
+}
+
+.heading {
+	font-size: var(--text-2xl);
+}
+
+.signature {
+	font-size: var(--text-xl);
+}
