@@ -1,9 +1,35 @@
+/* data-state 'rest': the in-page position, transparent over the first section. */
 .header {
 	position: absolute;
 	inset: 0 0 auto;
 	z-index: 10;
 	padding-block: 12px;
 	color: var(--color-cream);
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
+		box-shadow 0.3s ease;
+}
+
+/* Away from the top it becomes a fixed olive bar that slides in and out (see shy-header.ts). */
+.header[data-state='pinned'],
+.header[data-state='hidden'] {
+	position: fixed;
+	background-color: var(--color-olive);
+}
+
+.header[data-state='pinned'] {
+	box-shadow: 0 2px 12px rgb(0 0 0 / 0.15);
+}
+
+.header[data-state='hidden'] {
+	transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.header {
+		transition: none;
+	}
 }
 
 .list {

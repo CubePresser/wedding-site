@@ -7,7 +7,8 @@ interface Props {
 	logo: OptimizedImage;
 }
 
-// Sits on top of each page's first section, so that section must have a dark background.
+// At rest it sits on top of each page's first section, so that section must have a dark background.
+// src/scripts/shy-header.ts moves it between its data-state values as the page scrolls.
 export default function SiteHeader({ currentPath, logo }: Props) {
 	const path = currentPath.replace(/(.)\/$/, '$1');
 
@@ -27,7 +28,7 @@ export default function SiteHeader({ currentPath, logo }: Props) {
 		));
 
 	return (
-		<header className={styles.header}>
+		<header className={styles.header} data-shy-header data-state="rest">
 			<nav className="container" aria-label="Main">
 				<ul className={styles.list}>
 					{renderLinks(navLinks.left)}
