@@ -34,7 +34,14 @@ export default function SiteHeader({ currentPath, logo }: Props) {
 					{renderLinks(navLinks.left)}
 					<li>
 						<a className={`${styles.link} ${styles.monogram}`} href="/" aria-label="Rachel & Alex, home">
-							<img src={logo.src} srcSet={logo.srcSet} width={logo.width} height={logo.height} alt="" />
+							<img
+								className={styles.logo}
+								src={logo.src}
+								srcSet={logo.srcSet}
+								width={logo.width}
+								height={logo.height}
+								alt=""
+							/>
 						</a>
 					</li>
 					{renderLinks(navLinks.right)}

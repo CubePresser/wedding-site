@@ -101,7 +101,7 @@ Run after `astro build`, reading `dist/`.
       `reveal-ready` flag). All other scripts are `type="module"` and inline in `<body>`.
 - [ ] No page references a React client runtime (no `client:*` hydration): nothing loads a file
       from `dist/_astro/*.js`.
-- [ ] No source comments ship: e.g. no `Client behaviour` or `Scroll reveal` text in the HTML.
+- [ ] No source comments ship: e.g. no `Client behavior` or `Scroll reveal` text in the HTML.
 - [ ] Every `<img>` has `width`, `height` and an `alt` attribute (empty is fine for decoration).
 - [ ] Every image in `dist/_astro` is `.webp`; the largest is under 500 KB.
 - [ ] Fonts ship as `.woff2` only (no `.ttf`).

@@ -65,6 +65,12 @@
 	display: block;
 }
 
+/* In em so it scales with the link text: about 75px tall on desktop, as in the mockup, and 44px on phones. */
+.logo {
+	height: 2.75em;
+	width: auto;
+}
+
 @media (max-width: 560px) {
 	.link {
 		font-size: 1rem;
