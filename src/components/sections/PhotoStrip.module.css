@@ -1,6 +1,12 @@
+/* Fixed-width polaroids in wrapping rows; a part-filled last row is centered. */
 .photos {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 322px));
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	gap: clamp(32px, 6vw, 80px);
+}
+
+/* 322px wide, shrinking only when the screen is narrower than one polaroid. */
+.photo {
+	flex: 0 1 322px;
 }

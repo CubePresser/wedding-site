@@ -177,6 +177,14 @@ Use a 1366×900 desktop and a 390×844 phone unless noted.
 - [ ] At 500px wide, the dinner icon shrinks to fit its column without being squashed: its
       width-to-height ratio stays 1.22.
 
+### Wrapping rows
+At 1366, 1100, 1000, 900, 800, 700, 600, 500 and 390px wide, for the schedule timeline, the
+Where to Stay cards and the photo strip:
+- [ ] Every row is centered in its list (within 1px), including a part-filled last row.
+- [ ] Items in a part-filled last row are the same width as the full rows above it.
+- [ ] Items per row match the expected counts: schedule 6 / 3+3 (500–900px) / 2+2+2 (390px), never
+      a part-filled row; stay cards 3 / 2+1 (700–1000px) / 1+1+1; polaroids 3 / 2+1 (800–1100px) / 1+1+1.
+
 ### Navigation
 - [ ] Loading `/#details` scrolls `#details` to the top of the viewport.
 

@@ -3,10 +3,10 @@
 	text-align: center;
 }
 
+/* Laid out by .centered-wrap (global.css); the queries below set how many cards fit per row. */
 .cards {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-	gap: 40px;
+	--column-gap: 40px;
+	row-gap: 40px;
 	margin-top: 56px;
 }
 
@@ -15,6 +15,19 @@
 	background: var(--color-olive);
 	font-size: 1.25rem;
 	text-align: center;
+}
+
+/* As many cards per row as fit at 280px or wider (each threshold is n × 280px + gaps). */
+@container (min-width: 600px) {
+	.card {
+		--cols: 2;
+	}
+}
+
+@container (min-width: 920px) {
+	.card {
+		--cols: 3;
+	}
 }
 
 .name {

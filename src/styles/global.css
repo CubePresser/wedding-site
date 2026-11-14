@@ -82,6 +82,23 @@ h3 {
 	margin-inline: auto;
 }
 
+/* Wrapping rows of equal-width items, like an auto-fit grid, except a part-filled last row is
+   centered instead of starting at the left. The list sets --column-gap (and row-gap); its
+   children set --cols, the number per row, with @container queries against the list's width. */
+.centered-wrap {
+	container-type: inline-size;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: var(--column-gap, 0px);
+}
+
+.centered-wrap > * {
+	/* The 0.1px of slack stops rounding from pushing the last item of a full row onto the next. */
+	flex: 0 0
+		calc((100% - (var(--cols, 1) - 1) * var(--column-gap, 0px)) / var(--cols, 1) - 0.1px);
+}
+
 /* Backgrounds */
 .bg-stripes-olive {
 	background: repeating-linear-gradient(

@@ -13,10 +13,10 @@
 	font-size: var(--text-xl);
 }
 
+/* Laid out by .centered-wrap (global.css); the queries below set how many items fit per row. */
 .timeline {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-	gap: 40px 16px;
+	--column-gap: 16px;
+	row-gap: 40px;
 	margin-top: 64px;
 	padding: 0;
 	color: var(--color-plum-dark);
@@ -28,6 +28,24 @@
 	display: grid;
 	justify-items: center;
 	gap: 8px;
+}
+
+/* 6, 3 or 2 per row, so the six events always split into even rows. Each step starts once every
+   item would be at least 130px wide (n × 130px + gaps). */
+.item {
+	--cols: 2;
+}
+
+@container (min-width: 422px) {
+	.item {
+		--cols: 3;
+	}
+}
+
+@container (min-width: 860px) {
+	.item {
+		--cols: 6;
+	}
 }
 
 /* Drawings differ in height, so each sits on a shared baseline 12px above the bottom of a

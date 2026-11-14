@@ -13,7 +13,7 @@ export default function WhereToStay({ image }: Props) {
 			<h2 className={`display ${styles.heading}`} data-reveal>
 				Where to stay nearby
 			</h2>
-			<div className={styles.cards}>
+			<div className={`centered-wrap ${styles.cards}`}>
 				{lodging.map((option) => (
 					<article className={`flow ${styles.card}`} key={option.name} data-reveal>
 						<h3 className={`display ${styles.name}`}>{option.name}</h3>

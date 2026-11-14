@@ -16,7 +16,7 @@ export default function TheDay({ items }: Props) {
 			<p className={`script ${styles.intro}`} data-reveal>
 				{scheduleIntro}
 			</p>
-			<ol className={styles.timeline}>
+			<ol className={`centered-wrap ${styles.timeline}`}>
 				{items.map((item) => (
 					<li className={styles.item} key={item.label} data-reveal>
 						<div className={styles.art}>
