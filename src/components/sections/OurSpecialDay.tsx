@@ -10,7 +10,7 @@ interface Props {
 export default function OurSpecialDay({ image }: Props) {
 	return (
 		<Section tone="photo" image={image}>
-			<div className={`flow ${styles.panel}`}>
+			<div className={`flow ${styles.panel}`} data-reveal>
 				<h2 className={`script ${styles.heading}`}>Our Special Day</h2>
 				<p>
 					We are so excited to celebrate this wonderful moment in our lives with our closest friends

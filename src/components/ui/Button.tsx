@@ -1,14 +1,13 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import styles from './Button.module.css';
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<'a'> {
 	href: string;
-	children: ReactNode;
 }
 
-export default function Button({ href, children }: Props) {
+export default function Button({ className, children, ...rest }: Props) {
 	return (
-		<a href={href} className={`display ${styles.button}`}>
+		<a {...rest} className={`display ${styles.button} ${className ?? ''}`}>
 			{children}
 		</a>
 	);

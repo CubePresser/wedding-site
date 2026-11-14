@@ -12,7 +12,7 @@ export default function PhotoStrip({ photos }: Props) {
 		<Section tone="stripes">
 			<div className={styles.photos}>
 				{photos.map((photo) => (
-					<FramedPhoto key={photo.image.src} image={photo.image} alt={photo.alt} />
+					<FramedPhoto key={photo.image.src} image={photo.image} alt={photo.alt} data-reveal />
 				))}
 			</div>
 		</Section>

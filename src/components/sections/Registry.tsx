@@ -5,7 +5,7 @@ import styles from './Registry.module.css';
 export default function Registry() {
 	return (
 		<Section>
-			<div className={`flow ${styles.card}`}>
+			<div className={`flow ${styles.card}`} data-reveal>
 				<h2 className={`script ${styles.heading}`}>Registry</h2>
 				<p>
 					Your presence at our wedding is the greatest gift we could ever ask for! The time, effort,

@@ -58,6 +58,24 @@ h3 {
 	margin-top: 1.25em;
 }
 
+/* Scroll reveal: [data-reveal] elements fade up into place as they scroll into view.
+   The .reveal-ready class comes from the script in BaseLayout, so without JavaScript,
+   for reduced motion, or when printing, everything simply shows. */
+@media screen and (prefers-reduced-motion: no-preference) {
+	.reveal-ready [data-reveal] {
+		opacity: 0;
+		transform: translateY(32px);
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+	}
+
+	.reveal-ready [data-reveal].is-revealed {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 /* Layout */
 .container {
 	width: min(100% - 2 * var(--gutter), var(--content-width));

@@ -10,11 +10,15 @@ interface Props {
 export default function TheDay({ items }: Props) {
 	return (
 		<Section id="schedule">
-			<h2 className={`display ${styles.heading}`}>The Day</h2>
-			<p className={`script ${styles.intro}`}>{scheduleIntro}</p>
+			<h2 className={`display ${styles.heading}`} data-reveal>
+				The Day
+			</h2>
+			<p className={`script ${styles.intro}`} data-reveal>
+				{scheduleIntro}
+			</p>
 			<ol className={styles.timeline}>
 				{items.map((item) => (
-					<li className={styles.item} key={item.label}>
+					<li className={styles.item} key={item.label} data-reveal>
 						<img
 							className={styles.icon}
 							src={item.icon.src}

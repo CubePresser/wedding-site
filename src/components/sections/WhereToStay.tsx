@@ -10,10 +10,12 @@ interface Props {
 export default function WhereToStay({ image }: Props) {
 	return (
 		<Section tone="photo" image={image}>
-			<h2 className={`display ${styles.heading}`}>Where to stay nearby</h2>
+			<h2 className={`display ${styles.heading}`} data-reveal>
+				Where to stay nearby
+			</h2>
 			<div className={styles.cards}>
 				{lodging.map((option) => (
-					<article className={`flow ${styles.card}`} key={option.name}>
+					<article className={`flow ${styles.card}`} key={option.name} data-reveal>
 						<h3 className={`display ${styles.name}`}>{option.name}</h3>
 						<address className={styles.address}>
 							{option.address.map((line, index) => (

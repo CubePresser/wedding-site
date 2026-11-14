@@ -10,13 +10,16 @@ interface Props {
 export default function Hero({ image }: Props) {
 	return (
 		<section className={`${image ? '' : 'bg-photo-placeholder'} ${styles.hero}`}>
-			{image && <Backdrop image={image} />}
-			<h1 className={`display ${styles.names}`}>
+			{/* The hotel sits on the left of the photo, so keep that edge in view on narrow screens. */}
+			{image && <Backdrop image={image} position="left center" />}
+			<h1 className={`display ${styles.names}`} data-reveal>
 				<span className={styles.line}>{site.couple.first}</span>
 				<span className={`script ${styles.line} ${styles.and}`}>and</span>
 				<span className={styles.line}>{site.couple.second}</span>
 			</h1>
-			<p className={`display ${styles.tagline}`}>Are getting married!</p>
+			<p className={`display ${styles.tagline}`} data-reveal>
+				Are getting married!
+			</p>
 		</section>
 	);
 }

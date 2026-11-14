@@ -7,7 +7,7 @@ export default function Faqs() {
 		<Panel heading="Questions">
 			<dl className={styles.list}>
 				{faqs.map((faq) => (
-					<div key={faq.question}>
+					<div key={faq.question} data-reveal>
 						<dt className={styles.question}>{faq.question}</dt>
 						{faq.answer.map((paragraph) => (
 							<dd className={styles.answer} key={paragraph}>

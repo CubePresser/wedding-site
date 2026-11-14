@@ -5,10 +5,12 @@ import styles from './OtherDetails.module.css';
 export default function OtherDetails() {
 	return (
 		<Section id="details">
-			<h2 className={`script ${styles.heading}`}>Other Details</h2>
+			<h2 className={`script ${styles.heading}`} data-reveal>
+				Other Details
+			</h2>
 			<div className={styles.grid}>
 				{details.map((detail) => (
-					<article key={detail.title}>
+					<article key={detail.title} data-reveal>
 						<h3 className={`display ${styles.title}`}>{detail.title}</h3>
 						<div className="flow">
 							{detail.body.map((paragraph) => (

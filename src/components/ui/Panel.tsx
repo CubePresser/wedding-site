@@ -11,7 +11,9 @@ export default function Panel({ heading, children }: Props) {
 	return (
 		<main className={`bg-stripes-olive ${styles.page}`}>
 			<div className={`container ${styles.panel}`}>
-				<h1 className={`script ${styles.heading}`}>{heading}</h1>
+				<h1 className={`script ${styles.heading}`} data-reveal>
+					{heading}
+				</h1>
 				{children}
 			</div>
 		</main>

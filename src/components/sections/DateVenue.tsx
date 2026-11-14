@@ -12,8 +12,8 @@ export default function DateVenue({ photo }: Props) {
 		<section className={styles.section}>
 			<div className={`bg-stripes-stone ${styles.band}`} />
 			<div className={`container ${styles.grid}`}>
-				<FramedPhoto image={photo.image} alt={photo.alt} variant="double" />
-				<div className={styles.whenWhere}>
+				<FramedPhoto image={photo.image} alt={photo.alt} variant="double" data-reveal />
+				<div className={styles.whenWhere} data-reveal>
 					<p className={`script ${styles.date}`}>{site.dateShort}</p>
 					<p className={`script ${styles.at}`}>at</p>
 					<p className={`display ${styles.venue}`}>
