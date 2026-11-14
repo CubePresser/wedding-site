@@ -17,7 +17,9 @@ export default function SiteHeader({ currentPath, logo }: Props) {
 				<a
 					className={styles.link}
 					href={link.href}
+					// Server-side this only knows the path; a script in BaseLayout corrects it for #hash links.
 					aria-current={path === link.href ? 'page' : undefined}
+					data-nav-link
 				>
 					{link.label}
 				</a>

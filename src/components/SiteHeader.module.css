@@ -20,11 +20,19 @@
 	text-decoration: none;
 }
 
-.link[aria-current='page'],
-.link:hover {
+.link[aria-current] {
 	text-decoration: underline;
 	text-underline-offset: 6px;
 	text-decoration-thickness: 1px;
+}
+
+/* Touch screens keep :hover on the last tapped link, which would leave a second underline behind. */
+@media (hover: hover) {
+	.link:hover {
+		text-decoration: underline;
+		text-underline-offset: 6px;
+		text-decoration-thickness: 1px;
+	}
 }
 
 .monogram {
