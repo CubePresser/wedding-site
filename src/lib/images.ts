@@ -25,6 +25,8 @@ export const imagePresets = {
 	polaroid: { width: 290, height: 316, fit: 'cover', densities: [1, 2] },
 	/** Monogram in the header. */
 	logo: { height: 76, densities: [1, 2] },
+	/** Schedule icons in TheDay. Each item supplies its own height (iconHeight in src/data/schedule.ts). */
+	icon: { densities: [1, 2] },
 } satisfies Record<string, ImageOptions>;
 
 // astro:assets only works on the server, so pages call this and pass the result to React

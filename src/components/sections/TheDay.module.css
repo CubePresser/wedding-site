@@ -30,9 +30,20 @@
 	gap: 8px;
 }
 
-.icon {
+/* Drawings differ in height, so each sits on a shared baseline 12px above the bottom of a
+   fixed-height box. That keeps every time and label on one line. */
+.art {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 	height: 140px;
-	width: auto;
+	padding-bottom: 12px;
+}
+
+/* Sized by its width/height attributes; narrow columns shrink it without distorting it. */
+.icon {
+	max-width: 100%;
+	height: auto;
 }
 
 .time {

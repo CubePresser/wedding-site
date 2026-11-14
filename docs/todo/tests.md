@@ -171,6 +171,11 @@ Use a 1366×900 desktop and a 390×844 phone unless noted.
 - [ ] At 500px wide, background images load the 1280px version or larger (not the 768px one,
       which would look blurry when stretched to fill tall sections).
 - [ ] The engagement photo renders at the portrait 380×533 crop and the polaroids at 290×316.
+- [ ] Schedule icons render at their `iconHeight` from `src/data/schedule.ts` (rings 72px, the
+      others 119–125px) with their bottom edges on one line (within 1px), and all six times and
+      labels share one line, at 1366px wide.
+- [ ] At 500px wide, the dinner icon shrinks to fit its column without being squashed: its
+      width-to-height ratio stays 1.22.
 
 ### Navigation
 - [ ] Loading `/#details` scrolls `#details` to the top of the viewport.
