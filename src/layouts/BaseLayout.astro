@@ -1,8 +1,10 @@
 ---
 import { Font } from 'astro:assets';
+import logoImage from '../assets/images/logo.png';
 import SiteFooter from '../components/SiteFooter';
 import SiteHeader from '../components/SiteHeader';
 import { site } from '../data/site';
+import { imagePresets, optimizeImage } from '../lib/images';
 import '../styles/global.css';
 
 interface Props {
@@ -14,6 +16,8 @@ const {
 	title,
 	description = `Join ${site.couple.first} and ${site.couple.second} on ${site.dateLong}.`,
 } = Astro.props;
+
+const logo = await optimizeImage(logoImage, imagePresets.logo);
 ---
 
 <html lang="en">
@@ -30,7 +34,7 @@ const {
 		<Font cssVariable="--font-body" />
 	</head>
 	<body>
-		<SiteHeader currentPath={Astro.url.pathname} />
+		<SiteHeader currentPath={Astro.url.pathname} logo={logo} />
 		<slot />
 		<SiteFooter />
 	</body>

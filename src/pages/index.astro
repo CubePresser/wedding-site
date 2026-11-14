@@ -8,29 +8,40 @@ import Registry from '../components/sections/Registry';
 import Rsvp from '../components/sections/Rsvp';
 import TheDay from '../components/sections/TheDay';
 import WhereToStay from '../components/sections/WhereToStay';
-import { engagement, gallery } from '../data/photos';
+import { backgrounds, engagement, gallery } from '../data/photos';
 import { schedule } from '../data/schedule';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { optimizeImage } from '../lib/images';
+import { imagePresets, optimizeImage } from '../lib/images';
 
-const engagementPhoto = { ...engagement, image: await optimizeImage(engagement.image) };
+const [heroBackground, specialDayBackground, whereToStayBackground] = await Promise.all([
+	optimizeImage(backgrounds.hero, imagePresets.backdrop),
+	optimizeImage(backgrounds.specialDay, imagePresets.backdrop),
+	optimizeImage(backgrounds.whereToStay, imagePresets.backdrop),
+]);
+const engagementPhoto = {
+	...engagement,
+	image: await optimizeImage(engagement.image, imagePresets.framed),
+};
 const scheduleItems = await Promise.all(
 	schedule.map(async (item) => ({ ...item, icon: await optimizeImage(item.icon) })),
 );
 const galleryPhotos = await Promise.all(
-	gallery.map(async (photo) => ({ ...photo, image: await optimizeImage(photo.image) })),
+	gallery.map(async (photo) => ({
+		...photo,
+		image: await optimizeImage(photo.image, imagePresets.polaroid),
+	})),
 );
 ---
 
 <BaseLayout title="Home">
 	<main>
-		<Hero />
+		<Hero image={heroBackground} />
 		<DateVenue photo={engagementPhoto} />
-		<OurSpecialDay />
+		<OurSpecialDay image={specialDayBackground} />
 		<TheDay items={scheduleItems} />
 		<Rsvp />
 		<OtherDetails />
-		<WhereToStay />
+		<WhereToStay image={whereToStayBackground} />
 		<Registry />
 		<PhotoStrip photos={galleryPhotos} />
 	</main>

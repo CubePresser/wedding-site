@@ -1,10 +1,15 @@
 import { lodging } from '../../data/details';
+import type { OptimizedImage } from '../../lib/images';
 import Section from '../ui/Section';
 import styles from './WhereToStay.module.css';
 
-export default function WhereToStay() {
+interface Props {
+	image?: OptimizedImage;
+}
+
+export default function WhereToStay({ image }: Props) {
 	return (
-		<Section tone="photo">
+		<Section tone="photo" image={image}>
 			<h2 className={`display ${styles.heading}`}>Where to stay nearby</h2>
 			<div className={styles.cards}>
 				{lodging.map((option) => (

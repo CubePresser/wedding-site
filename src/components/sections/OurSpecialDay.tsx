@@ -1,10 +1,15 @@
 import { site } from '../../data/site';
+import type { OptimizedImage } from '../../lib/images';
 import Section from '../ui/Section';
 import styles from './OurSpecialDay.module.css';
 
-export default function OurSpecialDay() {
+interface Props {
+	image?: OptimizedImage;
+}
+
+export default function OurSpecialDay({ image }: Props) {
 	return (
-		<Section tone="photo">
+		<Section tone="photo" image={image}>
 			<div className={`flow ${styles.panel}`}>
 				<h2 className={`script ${styles.heading}`}>Our Special Day</h2>
 				<p>

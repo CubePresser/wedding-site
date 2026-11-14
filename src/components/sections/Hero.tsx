@@ -1,10 +1,16 @@
 import { site } from '../../data/site';
+import type { OptimizedImage } from '../../lib/images';
+import Backdrop from '../ui/Backdrop';
 import styles from './Hero.module.css';
 
-// TODO: swap the placeholder for the venue aerial using Section's image handling
-export default function Hero() {
+interface Props {
+	image?: OptimizedImage;
+}
+
+export default function Hero({ image }: Props) {
 	return (
-		<section className={`bg-photo-placeholder ${styles.hero}`}>
+		<section className={`${image ? '' : 'bg-photo-placeholder'} ${styles.hero}`}>
+			{image && <Backdrop image={image} />}
 			<h1 className={`display ${styles.names}`}>
 				<span className={styles.line}>{site.couple.first}</span>
 				<span className={`script ${styles.line} ${styles.and}`}>and</span>

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { OptimizedImage } from '../../lib/images';
+import Backdrop from './Backdrop';
 import styles from './Section.module.css';
 
 interface Props {
@@ -23,17 +24,7 @@ export default function Section({ id, tone = 'cream', image, children }: Props) 
 
 	return (
 		<section id={id} className={classes}>
-			{tone === 'photo' && image && (
-				<img
-					className={styles.backdrop}
-					src={image.src}
-					srcSet={image.srcSet}
-					sizes="100vw"
-					width={image.width}
-					height={image.height}
-					alt=""
-				/>
-			)}
+			{tone === 'photo' && image && <Backdrop image={image} />}
 			<div className={`container ${styles.content}`}>{children}</div>
 		</section>
 	);

@@ -1,13 +1,14 @@
 import { navLinks } from '../data/site';
-import Monogram from './ui/Monogram';
+import type { OptimizedImage } from '../lib/images';
 import styles from './SiteHeader.module.css';
 
 interface Props {
 	currentPath: string;
+	logo: OptimizedImage;
 }
 
 // Sits on top of each page's first section, so that section must have a dark background.
-export default function SiteHeader({ currentPath }: Props) {
+export default function SiteHeader({ currentPath, logo }: Props) {
 	const path = currentPath.replace(/(.)\/$/, '$1');
 
 	const renderLinks = (links: typeof navLinks.left) =>
@@ -30,7 +31,7 @@ export default function SiteHeader({ currentPath }: Props) {
 					{renderLinks(navLinks.left)}
 					<li>
 						<a className={`${styles.link} ${styles.monogram}`} href="/" aria-label="Rachel & Alex, home">
-							<Monogram />
+							<img src={logo.src} srcSet={logo.srcSet} width={logo.width} height={logo.height} alt="" />
 						</a>
 					</li>
 					{renderLinks(navLinks.right)}

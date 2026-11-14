@@ -1,10 +1,17 @@
 .hero {
+	position: relative;
 	display: grid;
 	place-content: center;
 	min-height: min(56vw, 768px);
 	padding-block: 130px 80px;
+	overflow: hidden;
 	color: var(--color-cream);
 	text-align: center;
+}
+
+.names,
+.tagline {
+	position: relative;
 }
 
 .names {

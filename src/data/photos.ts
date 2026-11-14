@@ -1,7 +1,16 @@
-import engagementImage from '../assets/placeholder/engagement.png';
-import lake from '../assets/placeholder/photo-lake.png';
-import mountain from '../assets/placeholder/photo-mountain.png';
+import heroBackground from '../assets/images/bg-hero.png';
+import specialDayBackground from '../assets/images/bg-our-special-day.png';
+import whereToStayBackground from '../assets/images/bg-where-to-stay.png';
+import engagementImage from '../assets/images/engagement.png';
+import lake from '../assets/images/lake.png';
+import mountain from '../assets/images/mountain.png';
 import paris from '../assets/placeholder/photo-paris.png';
+
+export const backgrounds = {
+	hero: heroBackground,
+	specialDay: specialDayBackground,
+	whereToStay: whereToStayBackground,
+};
 
 export const engagement = {
 	image: engagementImage,
