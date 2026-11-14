@@ -32,43 +32,15 @@ const logo = await optimizeImage(logoImage, imagePresets.logo);
 		<Font cssVariable="--font-display" preload />
 		<Font cssVariable="--font-script" preload />
 		<Font cssVariable="--font-body" />
-		<!--
-			Scroll reveal (styles in global.css). Inline in <head> so content is hidden before the first
-			paint instead of flashing in and out. Elements that enter the viewport together are staggered,
-			and data-reveal is removed once each finishes so the element's own transitions apply again.
-			Content is only hidden when IntersectionObserver exists to reveal it again.
-		-->
+		{
+			/*
+			 * The one inline script, and the only behavior that lives in this file. It hides
+			 * [data-reveal] content before the first paint, which Astro's bundled scripts (module
+			 * scripts, run after parsing) can be too late for. src/scripts/reveal.ts reveals it again.
+			 */
+		}
 		<script is:inline>
-			if ('IntersectionObserver' in window) {
-				document.documentElement.classList.add('reveal-ready');
-
-				addEventListener('DOMContentLoaded', () => {
-					const observer = new IntersectionObserver(
-						(entries) => {
-							entries
-								.filter((entry) => entry.isIntersecting)
-								.forEach((entry, index) => {
-									const el = entry.target;
-									observer.unobserve(el);
-									// Capped so a large batch (e.g. a very tall screen) doesn't leave items waiting.
-									el.style.transitionDelay = `${Math.min(index, 8) * 120}ms`;
-									el.addEventListener('transitionend', function done(event) {
-										if (event.target !== el) return;
-										el.removeEventListener('transitionend', done);
-										el.removeAttribute('data-reveal');
-										el.style.transitionDelay = '';
-									});
-									el.classList.add('is-revealed');
-								});
-						},
-						// A share of the element rather than an offset from the screen edge, so elements at the
-						// very end of the page still reveal once scrolled fully into view.
-						{ threshold: 0.15 },
-					);
-
-					document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
-				});
-			}
+			if ('IntersectionObserver' in window) document.documentElement.classList.add('reveal-ready');
 		</script>
 	</head>
 	<body>
@@ -76,27 +48,12 @@ const logo = await optimizeImage(logoImage, imagePresets.logo);
 		<slot />
 		<SiteFooter />
 
+		{/* Client behaviour lives in src/scripts. One tag each, so an error in one can't stop the others. */}
 		<script>
-			// The header is rendered at build time from the page path, which can't see #schedule or
-			// #details. Re-mark the current nav link from the full URL on load and on every hash change.
-			const normalize = (url: URL | Location) => url.pathname.replace(/(.)\/$/, '$1') + url.hash;
-
-			function markCurrentNavLink() {
-				const here = normalize(location);
-
-				document.querySelectorAll<HTMLAnchorElement>('a[data-nav-link]').forEach((link) => {
-					const target = new URL(link.href);
-
-					if (normalize(target) === here) {
-						link.setAttribute('aria-current', target.hash ? 'location' : 'page');
-					} else {
-						link.removeAttribute('aria-current');
-					}
-				});
-			}
-
-			markCurrentNavLink();
-			addEventListener('hashchange', markCurrentNavLink);
+			import '../scripts/reveal';
+		</script>
+		<script>
+			import '../scripts/nav-current';
 		</script>
 		<script>
 			import '../scripts/shy-header';
