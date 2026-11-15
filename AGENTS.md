@@ -69,6 +69,7 @@ Components render to static HTML at build time; no component is hydrated, so the
 ## Conventions
 
 - Use American spelling everywhere: code, comments, docs and site copy.
+- Don't commit until the user has reviewed the changes. When work is done, summarize what changed and leave it uncommitted; commit only when asked.
 
 ## Documentation
 

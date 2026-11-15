@@ -17,7 +17,8 @@ How this was set up, and why, is in `docs/plans/deploy-cloudflare.md`.
 
 ## How a push deploys
 
-On every push to `main`, Workers Builds:
+On every push to `main` that changes something besides docs (see build watch paths below), Workers
+Builds:
 1. Installs dependencies with bun. The bun version comes from `packageManager` in `package.json`,
    and Node's from `.node-version`.
 2. Runs the build command, `bun run check && bun run build`. A type error fails the build, and
@@ -54,6 +55,7 @@ records them.
 | Setting | Where in Cloudflare |
 |---|---|
 | Build command, deploy command, production branch (`main`), preview builds | Worker → Settings → Build |
+| Build watch paths: include `*`, exclude `docs/*, *.md, .vscode/*`, so a push that only changes docs or editor settings doesn't build or deploy | Worker → Settings → Build → Build watch paths |
 | Custom domain `gossjones2027.com` | Worker → Settings → Domains & Routes |
 | `www` → bare domain redirect (301, keeps path and query) | `gossjones2027.com` zone → Rules → Redirect Rules |
 | `www` DNS record (`A` `192.0.2.0`, proxied; a placeholder the redirect needs) | Zone → DNS → Records |

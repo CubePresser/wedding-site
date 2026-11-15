@@ -1,43 +1,64 @@
-# Astro Starter Kit: Minimal
+# Rachel & Alex's Wedding
+
+The website for Rachel and Alex's wedding on September 12, 2027, live at
+**https://gossjones2027.com**.
+
+It's a static site built with [Astro](https://astro.build) and React, with two pages (Home and
+FAQs) and a 404 page. Visitors get plain HTML and CSS plus a few small scripts; no React runs in
+the browser. It's hosted on Cloudflare, and every push to `main` deploys it.
+
+## Getting started
+
+You'll need [mise](https://mise.jdx.dev), which installs the right versions of Node and bun (set in
+`.node-version` and `packageManager` in `package.json`).
 
 ```sh
-bun create astro@latest -- --template minimal
+mise install
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The dev server runs at http://localhost:4321.
 
-## 🚀 Project Structure
+## Commands
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command | What it does |
+|---|---|
+| `bun run dev` | Start the dev server at `localhost:4321` |
+| `bun run check` | Type-check the project (`astro check`) |
+| `bun run build` | Build the site to `dist/` |
+| `bunx wrangler dev` | Serve `dist/` the way Cloudflare does, after a build |
+| `bun astro …` | Run other Astro CLI commands |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Use `bun run build`, not `bun build`: the latter is bun's own bundler, not the project's build
+script.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Where things are
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Path | What's there |
+|---|---|
+| `src/data/` | Site details and copy: date, venue, schedule, FAQs, contact email |
+| `src/pages/` | The pages: `index.astro`, `faqs.astro`, `404.astro` |
+| `src/layouts/BaseLayout.astro` | The shared page shell: head, header, footer, scripts |
+| `src/components/` | React components: page sections in `sections/`, shared pieces in `ui/` |
+| `src/styles/` | Design tokens (`tokens.css`) and global styles |
+| `src/scripts/` | Small browser scripts: scroll reveal, nav underline, shy header |
+| `src/assets/` | Images and fonts. `placeholder/` holds images still to be replaced |
+| `public/` | Files served as-is, including `_headers` for Cloudflare |
+| `docs/` | Deploy notes, plans and the test backlog (see below) |
 
-Any static assets, like images, can be placed in the `public/` directory.
+Most copy changes only touch `src/data/`.
 
-## 🧞 Commands
+## Deploying
 
-All commands are run from the root of the project, from a terminal:
+Merge to `main` and Cloudflare builds and deploys the site. Changes that only touch docs don't
+trigger a deploy. Details, previews and rollbacks are in [docs/deploy.md](docs/deploy.md).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+## Docs
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [docs/deploy.md](docs/deploy.md): how hosting and deploys work, and which settings live in the
+  Cloudflare dashboard.
+- [docs/todo/tests.md](docs/todo/tests.md): the backlog of tests to write.
+- [docs/plans/](docs/plans/): finished plans, kept as a record.
+- [AGENTS.md](AGENTS.md): conventions and project notes for AI coding agents, also useful for
+  people.
