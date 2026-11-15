@@ -115,9 +115,6 @@ Run after `astro build`, reading `dist/`.
 - [ ] Every `<img>` has `width`, `height` and an `alt` attribute (empty is fine for decoration).
 - [ ] Every image in `dist/_astro` is `.webp`; the largest is under 500 KB.
 - [ ] Fonts ship as `.woff2` only (no `.ttf`).
-- [ ] Tab icons: every page links `/favicon.ico` (16×16 and 32×32), `/icon.png` (192×192) and
-      `/apple-touch-icon.png` (180×180, cream background), all three exist in `dist/`, and there's
-      no `favicon.svg` (the Astro logo).
 
 ## Browser tests (Playwright)
 
