@@ -6,6 +6,8 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
+  // Build faqs.html rather than faqs/index.html, so Cloudflare serves /faqs without redirecting to /faqs/.
+  build: { format: 'file' },
   fonts: [
     {
       provider: fontProviders.local(),

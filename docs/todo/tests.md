@@ -92,12 +92,18 @@ Needs a small refactor first: pull the decision in `update()` out into a pure fu
 - [ ] Each section's foreground elements carry `data-reveal`: hero names and tagline, engagement
       photo and date block, Our Special Day panel, The Day heading/intro/each item, RSVP
       heading/text/button, Other Details heading/each item, Where to Stay heading/each card,
-      Registry card, each polaroid, footer heading/contact, FAQ heading/each question.
+      Registry card, each polaroid, footer heading/contact, FAQ heading/each question, 404 heading and
+      message.
 
 ## Build output tests
 
 Run after `astro build`, reading `dist/`.
-- [ ] Only `/` and `/faqs` are built; `/schedule` and `/details` don't exist.
+- [ ] Only `index.html`, `faqs.html` and `404.html` are built; `/schedule` and `/details` don't
+      exist, and there's no `faqs/index.html`.
+- [ ] Every page has `<meta name="robots" content="noindex">`, and `dist/_headers` sets
+      `X-Robots-Tag: noindex` for `/*`.
+- [ ] The header marks the current page at build time: `aria-current="page"` on Home in
+      `index.html` and on FAQs in `faqs.html`, and on nothing in `404.html`.
 - [ ] Each page has exactly one classic script, in `<head>`, under 200 characters (the
       `reveal-ready` flag). All other scripts are `type="module"` and inline in `<body>`.
 - [ ] No page references a React client runtime (no `client:*` hydration): nothing loads a file
@@ -188,6 +194,17 @@ Where to Stay cards and the photo strip:
 
 ### Navigation
 - [ ] Loading `/#details` scrolls `#details` to the top of the viewport.
+
+### Served by Wrangler
+Run against `bunx wrangler dev` after `bun run build`, which serves `dist/` the way Cloudflare does.
+Restart it after each build: it doesn't pick up new files in `dist/`.
+- [ ] `/` and `/faqs` return 200. `/faqs/` and `/faqs.html` redirect (307) to `/faqs`;
+      `/index.html` redirects to `/`.
+- [ ] An unknown URL (`/nope`, `/some/deep/path`) returns 404 with the site's 404 page: title
+      "Page Not Found", heading "Oops!", and a Back to Home button linking to `/`.
+- [ ] Every response, including the 404 page, images and fonts, has `X-Robots-Tag: noindex`.
+- [ ] `/_headers` itself isn't served (404).
+- [ ] Every image and font referenced by `/` returns 200.
 
 ### Visual regression
 - [ ] Full-page screenshots of `/` and `/faqs` at 1366, 800 and 500px wide, compared with stored

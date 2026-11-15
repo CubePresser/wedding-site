@@ -1,0 +1,10 @@
+{
+	// Static assets only: Cloudflare serves the built site from dist/, with no Worker code.
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "wedding-site",
+	"compatibility_date": "2026-11-14",
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "404-page"
+	}
+}

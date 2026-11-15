@@ -10,7 +10,8 @@ interface Props {
 // At rest it sits on top of each page's first section, so that section must have a dark background.
 // src/scripts/shy-header.ts moves it between its data-state values as the page scrolls.
 export default function SiteHeader({ currentPath, logo }: Props) {
-	const path = currentPath.replace(/(.)\/$/, '$1');
+	// The build passes file paths (/index.html, /faqs.html); dev passes URLs, maybe with a trailing slash.
+	const path = currentPath.replace(/(index)?\.html$/, '').replace(/(.)\/$/, '$1');
 
 	const renderLinks = (links: typeof navLinks.left) =>
 		links.map((link) => (

@@ -1,3 +1,4 @@
-[tools]
-bun = "1.4.4"
-node = "26.13.0"
+# Versions are read from the files Cloudflare's builds use, so each is written down once:
+# Node from .node-version, bun from "packageManager" in package.json.
+[settings]
+idiomatic_version_file_enable_tools = ["node", "bun"]
