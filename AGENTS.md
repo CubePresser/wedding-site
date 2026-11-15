@@ -1,6 +1,9 @@
 ## Project overview
 
-A static Astro site (no server adapter) for Rachel and Alex's wedding, with two routes: `/` and `/faqs`. The nav's Schedule and Details links are sections of the home page (`/#schedule`, `/#details`), not separate pages.
+A static Astro site (no server adapter) for Rachel and Alex's wedding, with two routes: `/` and `/faqs`, plus a 404 page. The nav's Schedule and Details links are sections of the home page (`/#schedule`, `/#details`), not separate pages.
+
+- Pages build as files (`faqs.html`, not `faqs/index.html`; `build.format` in `astro.config.mjs`), so links have no trailing slash: `/faqs`.
+- The site is kept out of search engines: a `noindex` meta tag in `BaseLayout.astro`, and an `X-Robots-Tag` header for every file in `public/_headers`.
 
 - `.astro` files are only `src/pages/*` and `src/layouts/BaseLayout.astro`. Everything else is React in `src/components/` (`sections/` for page sections, `ui/` for shared pieces).
 - Site copy and details (date, venue, schedule, FAQs, contact email) live in `src/data/*.ts`.
@@ -10,6 +13,7 @@ A static Astro site (no server adapter) for Rachel and Alex's wedding, with two 
   - Fixed-width items (the polaroids) just need `display: flex; flex-wrap: wrap; justify-content: center` (see `PhotoStrip.module.css`).
 - Fonts are set up in `astro.config.mjs`: The Seasons (local WOFF2), plus Pinyon Script and Montserrat from Google Fonts.
 - Use bun: `bun install`, `bun run <script>`.
+- Tool versions: Node in `.node-version`, bun in `packageManager` in `package.json`. Both mise and Cloudflare's builds read these, so change versions there, not in `mise.toml`.
 
 ## Development
 
