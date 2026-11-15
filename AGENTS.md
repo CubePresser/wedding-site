@@ -3,7 +3,7 @@
 A static Astro site (no server adapter) for Rachel and Alex's wedding, with two routes: `/` and `/faqs`. The nav's Schedule and Details links are sections of the home page (`/#schedule`, `/#details`), not separate pages.
 
 - `.astro` files are only `src/pages/*` and `src/layouts/BaseLayout.astro`. Everything else is React in `src/components/` (`sections/` for page sections, `ui/` for shared pieces).
-- Site copy and details (date, venue, schedule, FAQs, contacts) live in `src/data/*.ts`.
+- Site copy and details (date, venue, schedule, FAQs, contact email) live in `src/data/*.ts`.
 - Styles: design tokens in `src/styles/tokens.css`, global helpers (`.container`, `.display`, `.script`, `.flow`, `.bg-*`, `.centered-wrap`) in `src/styles/global.css`, and a `.module.css` next to each component. CSS Modules only scope class names, so style with classes: a bare `h2 {}` in a module applies to the whole site.
 - Rows of items that wrap keep a part-filled last row centered:
   - Equal, fluid-width items (schedule, stay cards) use `.centered-wrap`; the list sets `--column-gap` and its children set `--cols` with `@container` queries. Prefer column counts that divide the number of items evenly.

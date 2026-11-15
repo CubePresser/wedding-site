@@ -24,7 +24,7 @@ export const navLinks = {
 	],
 };
 
-export const contacts = [
-	{ name: 'Rachel', phone: '[redacted]', email: 'gossjones2027@gmail.com' },
-	{ name: 'Alex', phone: '[redacted]', email: 'gossjones2027@gmail.com' },
-];
+export const contact = {
+	name: `${site.couple.first} & ${site.couple.second}`,
+	email: 'gossjones2027@gmail.com',
+};

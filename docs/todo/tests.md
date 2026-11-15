@@ -85,13 +85,14 @@ Needs a small refactor first: pull the decision in `update()` out into a pure fu
       when no image is given.
 
 ### `SiteFooter`
-- [ ] Phone links strip formatting: `[redacted]` → `tel:[redacted]`.
+- [ ] Shows one contact, "Rachel & Alex", with a `mailto:gossjones2027@gmail.com` link.
+- [ ] Build output: no page contains a phone number or a `tel:` link.
 
 ### Foreground elements are marked for reveal
 - [ ] Each section's foreground elements carry `data-reveal`: hero names and tagline, engagement
       photo and date block, Our Special Day panel, The Day heading/intro/each item, RSVP
       heading/text/button, Other Details heading/each item, Where to Stay heading/each card,
-      Registry card, each polaroid, footer heading/each contact, FAQ heading/each question.
+      Registry card, each polaroid, footer heading/contact, FAQ heading/each question.
 
 ## Build output tests
 
