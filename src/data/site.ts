@@ -10,7 +10,7 @@ export const site = {
 	dateLong: formatDate({ weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }),
 	venue: { name: 'Columbia Gorge Hotel', region: 'OR' },
 	rsvp: { url: '#', deadline: 'June 1, 2027' }, // TODO: RSVP link
-	registryUrl: '#', // TODO: registry link
+	registryUrl: 'https://registry.theknot.com/rachel-goss-alex-jones-september-2027/78574045',
 };
 
 export const navLinks = {
