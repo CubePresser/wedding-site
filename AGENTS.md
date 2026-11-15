@@ -58,6 +58,14 @@ Components render to static HTML at build time; no component is hydrated, so the
 - There are no automated tests yet. `docs/todo/tests.md` is the backlog of tests to write. When you build or change a feature, add the scenarios you checked, with their expected results.
 - The site uses smooth scrolling. When checking scroll behavior in a browser, wait for each scroll to finish before the next action.
 
+## Deploying
+
+- The live site is https://gossjones2027.com, on Cloudflare Workers. Every push to `main` builds and deploys it, so a push to `main` is a release. Work on a branch and merge when it's ready.
+- Cloudflare's build runs `bun run check && bun run build`; if either fails, nothing is deployed.
+- Before merging, check the built site with `bunx wrangler dev`, which serves `dist/` the way Cloudflare does (restart it after each build).
+- How deploys, previews and rollbacks work, and which settings live only in the Cloudflare dashboard: `docs/deploy.md`.
+- `docs/todo/` holds plans and backlogs still in progress; `docs/plans/` keeps finished plans as a record.
+
 ## Conventions
 
 - Use American spelling everywhere: code, comments, docs and site copy.

@@ -13,7 +13,8 @@ Tick items off as they're written. When this file is empty, delete it.
 | Unit | [Vitest](https://vitest.dev), configured with `getViteConfig` from `astro/config` so `astro:*` imports resolve | Source |
 | Component | Vitest + `react-dom/server` (`renderToStaticMarkup`) for React components; `experimental_AstroContainer` from `astro/container` for `.astro` files | Source |
 | Build output | Vitest (or plain Node) reading files in `dist/` | `astro build` output |
-| Browser | [Playwright](https://playwright.dev), using its `webServer` option to start `astro preview` | Built site |
+| Browser | [Playwright](https://playwright.dev), using its `webServer` option to start `bunx wrangler dev`, which serves `dist/` the way Cloudflare does | Built site |
+| Live site | Plain Node `fetch` and `node:dns`, run by hand or on a schedule after a deploy | https://gossjones2027.com |
 
 Suggested CI order: `astro check` → `vitest` → `astro build` → build-output tests → Playwright.
 
@@ -66,6 +67,8 @@ Needs a small refactor first: pull the decision in `update()` out into a pure fu
 ### `SiteHeader`
 - [ ] With `currentPath="/"`, Home has `aria-current="page"` and no other link does.
 - [ ] With `currentPath="/faqs"` and `"/faqs/"`, FAQs has `aria-current="page"`.
+- [ ] With the build's file paths, `currentPath="/index.html"` marks Home and `"/faqs.html"`
+      marks FAQs.
 - [ ] Every text link has `data-nav-link`; the logo link doesn't.
 - [ ] The `<header>` renders with `data-shy-header` and `data-state="rest"`.
 - [ ] The logo `<img>` has `alt=""` and the link has `aria-label="Rachel & Alex, home"`.
@@ -212,3 +215,26 @@ Restart it after each build: it doesn't pick up new files in `dist/`.
       reduced motion on to keep them stable.
 - [ ] Hero at 375px wide: the hotel stays in view (check the baseline by eye once, then let the
       screenshot comparison guard it).
+
+## Live site checks
+
+Run against https://gossjones2027.com after a deploy (or a DNS change). All of these passed on
+2026-11-14, when the domain was attached.
+
+**Pitfall:** a Mac that looked the domain up before it went live can keep a cached "not found"
+answer for a while. If requests fail to resolve while public DNS (`dig @1.1.1.1`) has the address,
+resolve through Cloudflare instead (`curl --doh-url https://1.1.1.1/dns-query`, or Chrome's
+`--host-resolver-rules="MAP gossjones2027.com <ip>"`).
+
+- [ ] `https://gossjones2027.com/` and `/faqs` return 200 with a valid certificate covering
+      `gossjones2027.com` and `www.gossjones2027.com`.
+- [ ] `http://gossjones2027.com/faqs` returns 301 to `https://gossjones2027.com/faqs`.
+- [ ] `https://www.gossjones2027.com/faqs?x=1` returns 301 to `https://gossjones2027.com/faqs?x=1`
+      (path and query kept).
+- [ ] `http://www.gossjones2027.com/faqs` ends at `https://gossjones2027.com/faqs` (two
+      redirects: to HTTPS, then off `www`).
+- [ ] `/faqs/` returns 307 to `/faqs`; an unknown URL returns 404 with the site's 404 page.
+- [ ] Every response has `X-Robots-Tag: noindex`.
+- [ ] DNS: the `.com` registry lists Cloudflare's nameservers and a DS record, and validating
+      resolvers (1.1.1.1, 8.8.8.8, 9.9.9.9) answer with the `ad` flag set, not SERVFAIL.
+- [ ] The browser scenarios above pass against the live site at desktop and phone sizes.
